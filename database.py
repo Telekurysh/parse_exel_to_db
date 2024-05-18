@@ -9,12 +9,13 @@ Base = declarative_base()
 
 
 class Delivery(Base):
-    __tablename__ = 'deliveries'
+    __schema__ = "public"
+    __tablename__ = 'productsales'
 
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    # user_id = Column(Integer, ForeignKey('users.id'))
     unloading_time = Column(Date)
-    delivery_number = Column(Integer)
+    deliverynumber = Column(Integer)
     item = Column(String)
     item_code = Column(Integer)
     brand = Column(String)
@@ -92,12 +93,13 @@ def main():
     data = read_excel_file(args.file_path)
     user_id = 1
     time = datetime.now()
+    # print(data)
     for item in data[1:]:
         delivery = Delivery(
             id=item[0],
-            user_id=user_id,
+            # user_id=user_id,
             unloading_time=time,
-            delivery_number=item[1],
+            deliverynumber=item[1],
             item=item[2],
             item_code=item[3],
             brand=item[4],

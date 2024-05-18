@@ -11,7 +11,12 @@ def read_excel_file(file_path):
 
         for row in sheet.iter_rows(values_only=True):
             data.append(row)
-
+        with open("example.txt", "r") as f:
+            pattern = f.readline()
+        if " ".join(data[0]) != pattern:
+            with open("log.txt", "a") as f:
+                f.write(f"Шаблон таблицы поменялся.\nПуть до несоответствующего файла: {file_path}\n")
+            exit(0)
         return data
 
     except Exception as e:
@@ -19,9 +24,12 @@ def read_excel_file(file_path):
         return None
 
 
-file_path = "0.xlsx"  # Укажите путь к вашему файлу Excel
-excel_data = read_excel_file(file_path)
-if excel_data:
-    print("Данные из файла Excel:")
-    for row in excel_data:
-        print(row)
+# file_path = "0.xlsx"  # Укажите путь к вашему файлу Excel
+# excel_data = read_excel_file(file_path)
+# if excel_data:
+#     print("Данные из файла Excel:")
+#     # print(*excel_data[0])
+#     # with open("example.txt", "w") as f:
+#     #     f.write(" ".join(excel_data[0]))
+#     for row in excel_data:
+#         print(row)
