@@ -1,12 +1,10 @@
 import argparse
-from sqlalchemy import create_engine, Column, Integer, String, Float, Date, Numeric, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+from models import Delivery
 from parse import read_excel_file
 from datetime import datetime
-
-Base = declarative_base()
-
 
 
 def parse_args():

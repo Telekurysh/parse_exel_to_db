@@ -1,3 +1,9 @@
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Float, Date
+
+Base = declarative_base()
+
+
 class Delivery(Base):
     __schema__ = "public"
     __tablename__ = 'productsales'
