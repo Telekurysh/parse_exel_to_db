@@ -3,6 +3,7 @@ import os
 import subprocess
 import time
 from parse import read_excel_file
+from database import save_data
 
 
 app = Flask(__name__)
@@ -34,8 +35,8 @@ def upload_file():
         user_id = '1'
         filename = user_id + '_' + str(time.time()).split('.')[0] + '.xlsx'
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        if read_excel_file('uploads/' + filename):
-            subprocess.call(['python', 'database.py'] + ['uploads/' + filename])
+        if read_excel_file(str('./uploads/' + filename)):
+            save_data('uploads/' + filename)
         return 'Файл успешно загружен!'
     else:
         return 'Недопустимый тип файла. Пожалуйста, загрузите файл с расширением .xlsx или .xls'
