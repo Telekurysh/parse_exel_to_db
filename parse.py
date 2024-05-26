@@ -24,12 +24,13 @@ def read_excel_file(file_path):
         return None
 
 
-# file_path = "0.xlsx"  # Укажите путь к вашему файлу Excel
+# file_path = "uploads/0.xlsx"  # Укажите путь к вашему файлу Excel
 # excel_data = read_excel_file(file_path)
 # if excel_data:
-#     print("Данные из файла Excel:")
-#     # print(*excel_data[0])
-#     # with open("example.txt", "w") as f:
-#     #     f.write(" ".join(excel_data[0]))
-#     for row in excel_data:
-#         print(row)
+    # print("Данные из файла Excel:")
+    # print(*excel_data[0])
+    # with open("example.txt", "w") as f:
+    #     f.write(" ".join(excel_data[0]))
+    # print(len(excel_data) - 1)
+    # for row in excel_data:
+    #     print(row)

@@ -17,6 +17,7 @@ def save_data(file_path):
     session = Session()
 
     data = read_excel_file(file_path)
+    count_lines = len(data) - 1
     user_id = 1
     time = datetime.now()
     # print(data)
