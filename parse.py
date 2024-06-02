@@ -1,6 +1,7 @@
 from openpyxl import load_workbook
 import logging
 import difflib
+from example import data_dict
 
 
 def compare_strings(string1, string2):
@@ -38,13 +39,14 @@ def read_excel_file(file_path):
 
         for row in sheet.iter_rows(values_only=True):
             data.append(row)
-        with open("example.txt", "r") as f:
-            pattern = f.readline()
-        if " ".join(data[0]) != pattern:
-            logger.addHandler(file_handler)
-            logger.error("Шаблон поменялся")
-            logger.error('\n'.join(compare_strings(pattern, " ".join(data[0]))))
-            return False
+        for i, value in enumerate(data[0], start=1):
+            if data_dict.get(i) != value:
+                sorted_values = [data_dict[key] for key in sorted(data_dict.keys())]
+                result_string = ' '.join(sorted_values)
+                logger.addHandler(file_handler)
+                logger.error("Шаблон поменялся")
+                logger.error('\n'.join(compare_strings(result_string, " ".join(data[0]))))
+                return False
         return data
 
     except Exception as e:
@@ -56,7 +58,7 @@ def read_excel_file(file_path):
 # excel_data = read_excel_file(file_path)
 # if excel_data:
 #     print("Данные из файла Excel:")
-#     print(" ".join(excel_data[0]))
+#     print(excel_data[0])
 #     with open("example.txt", "w") as f:
 #         f.write(" ".join(excel_data[0]))
 # print(len(excel_data) - 1)

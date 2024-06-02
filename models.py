@@ -8,9 +8,11 @@ class Delivery(Base):
     __schema__ = "public"
     __tablename__ = 'productsales'
 
-    id = Column(Integer, primary_key=True)
-    # user_id = Column(Integer, ForeignKey('users.id'))
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer)
+    doc_id = Column(String)
     unloading_time = Column(DateTime)
+    doc_row_number = Column(Integer)
     deliverynumber = Column(Integer)
     item = Column(String)
     item_code = Column(Integer)
@@ -58,7 +60,7 @@ class Delivery(Base):
     warehouse = Column(String)
     country = Column(String)
     box_type = Column(String)
-    customs_declaration_number = Column(String)
+    customs_declaration_number = Column(Integer)
     marking_code = Column(String)
     shk = Column(String)
     rid = Column(String)
